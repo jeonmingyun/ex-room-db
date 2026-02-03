@@ -3,6 +3,7 @@ package com.min.ex_room_db
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
 
 /**
@@ -20,7 +21,7 @@ interface UserDao {
             "last_name LIKE :last LIMIT 1")
     fun findByName(first: String, last: String): UserEntity
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE) // OnConflictStrategy.REPLACE = 동일한 데이터가 있으면 덮어쓰기
     fun insertAll(vararg users: UserEntity)
 
     @Delete
