@@ -21,7 +21,7 @@ interface UserDao {
             "last_name LIKE :last LIMIT 1")
     fun findByName(first: String, last: String): UserEntity
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE) // OnConflictStrategy.REPLACE = 동일한 데이터가 있으면 덮어쓰기
+    @Insert(onConflict = OnConflictStrategy.REPLACE) // REPLACE = 동일한 데이터가 있으면 덮어쓰기
     fun insertAll(vararg users: UserEntity)
 
     @Delete
